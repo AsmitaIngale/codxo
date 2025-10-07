@@ -1,0 +1,154 @@
+/* Base theme */
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #3b82f6;
+  --accent: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --ok: #22c55e;
+  --border: #1f2937;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 10% -10%, #1f2937 0, var(--bg) 40%);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.branding { font-weight: 700; letter-spacing: 0.3px; }
+.conn-status { color: var(--muted); font-size: 14px; }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px;
+  padding: 16px;
+}
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.0));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 14px 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+.card h2 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+/* Camera */
+.camera-container {
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: #0b1020;
+  aspect-ratio: 16/9;
+}
+.camera-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 10px, rgba(0,0,0,0.05) 10px, rgba(0,0,0,0.05) 20px);
+}
+.hidden { display: none; }
+
+/* Map */
+.map {
+  width: 100%;
+  height: 340px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.coords { margin-top: 8px; color: var(--muted); font-size: 14px; }
+
+/* Telemetry */
+.stats { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.stat { display: flex; align-items: center; justify-content: space-between; }
+.label { color: var(--muted); }
+.value { font-weight: 600; }
+
+.battery { display: flex; align-items: center; gap: 10px; }
+.battery-bar {
+  flex: 1 1 auto;
+  height: 12px;
+  background: #0b1020;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.battery-level {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #3b82f6);
+  transition: width 300ms ease;
+}
+.badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  background: #0b1020;
+}
+.badge.ok { color: var(--ok); border-color: #134e4a; background: rgba(34,197,94,0.08); }
+.badge.alert { color: #fecaca; border-color: #7f1d1d; background: rgba(239,68,68,0.08); }
+
+/* Controls */
+.controls { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #0b1020;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+.btn:hover { transform: translateY(-1px); border-color: #334155; }
+.btn:active { transform: translateY(0); }
+.btn.primary { border-color: #1d4ed8; background: rgba(59,130,246,0.12); }
+.btn.warning { border-color: #92400e; background: rgba(245,158,11,0.12); }
+.btn.accent { border-color: #065f46; background: rgba(16,185,129,0.12); }
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px 28px;
+  color: var(--muted);
+}
+.app-status { margin-left: 12px; color: var(--muted); }
