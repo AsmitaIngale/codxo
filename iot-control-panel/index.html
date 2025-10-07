@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IoT Control Panel</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="branding">IoT Control Panel</div>
+      <div id="connectionStatus" class="conn-status">Simulated Mode</div>
+    </header>
+
+    <main class="layout">
+      <section class="card camera-card">
+        <h2>Live Camera</h2>
+        <div class="camera-container">
+          <img id="cameraFeed" alt="Camera feed" />
+          <div id="cameraOverlay" class="overlay hidden">Camera not configured</div>
+        </div>
+      </section>
+
+      <section class="card map-card">
+        <h2>GPS Location</h2>
+        <div id="map" class="map"></div>
+        <div class="coords">
+          <span id="latValue">--</span>, <span id="lngValue">--</span>
+        </div>
+      </section>
+
+      <section class="card telemetry-card">
+        <h2>Telemetry</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="label">Temperature</div>
+            <div class="value" id="temperatureValue">-- °C</div>
+          </div>
+          <div class="stat">
+            <div class="label">Battery</div>
+            <div class="value battery">
+              <div class="battery-bar">
+                <div id="batteryLevel" class="battery-level" style="width:0%"></div>
+              </div>
+              <span id="batteryPercent">--%</span>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="label">Fire</div>
+            <div class="value">
+              <span id="fireStatus" class="badge">Unknown</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card controls-card">
+        <h2>Controls</h2>
+        <div class="controls">
+          <button id="btnMove" class="btn primary">▶ Move</button>
+          <button id="btnStop" class="btn warning">■ Stop</button>
+          <button id="btnSpray" class="btn accent">💦 Spray</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span id="lastUpdated">Last update: --</span>
+      <span id="appStatus" class="app-status"></span>
+    </footer>
+
+    <!-- Configuration (create/edit config.js from config.example.js) -->
+    <script src="config.js"></script>
+    <!-- App logic -->
+    <script src="app.js"></script>
+  </body>
+</html>
